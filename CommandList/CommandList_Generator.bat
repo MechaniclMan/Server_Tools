@@ -1,0 +1,1 @@
+pp -o=C:\BrenBot_154\Br_Plugins\CommandList\CommandList\CommandList_Generator.exe -M XML::SAX::Expat -log=C:\BrenBot_154\Br_Plugins\CommandList\CommandList_Generator.txt -v -icon=C:\strawberry\perl\bren\Renegade.ico C:\BrenBot_154\Br_Plugins\CommandList\CommandList_Generator.pl

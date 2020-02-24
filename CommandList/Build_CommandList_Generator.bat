@@ -1,0 +1,1 @@
+pp -o=X:\BrenBot_154\Tools\CommandList\CommandList\CommandList_Generator.exe -M XML::SAX::Expat -M XML::LibXML::SAX -log=X:\BrenBot_154\Tools\CommandList\CommandList\CommandList_Generator.txt -v X:\BrenBot_154\Tools\CommandList\CommandList\CommandList_Generator.pl
