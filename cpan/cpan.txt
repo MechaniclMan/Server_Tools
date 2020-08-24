@@ -1,0 +1,22 @@
+
+install POE
+install POE::Kernel
+install POE::Sessioni
+install Encode
+install Date::Calc
+install XML::Simple
+install Digest::MD5
+install Class::Unload
+install XML::Parser
+install Net::FTP
+install pp
+install DBD::SQLite2
+install DBD::SQLite
+install DBD::mysql
+install Win32:GUI
+install Tie::STDOUT
+install Win32::Console
+install Win32::Process::List
+install Win32::Process::Info
+
+
