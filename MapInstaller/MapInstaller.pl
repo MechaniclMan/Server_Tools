@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 use File::Copy;
+use File::NCopy;
 use File::Path qw( make_path rmtree ); 
 use Cwd qw(getcwd);
 
@@ -16,6 +17,8 @@ my $config_map_version					= 1.0;
 my $config_extra_packages 				= 0;
 my $config_map_prefix					= 'C&C';
 my $config_map_directory 				= 'Maps';
+my $config_web_directory 				= '';
+my $config_ttfs_path 					= "/Renegade/FDS/ttfs/";
 my $config_install_file 				= 'install.txt';
 my $config_ttcfg_file 					= 'tt.cfg';
 my $config_rxd_package					= 'RxD4.6';
@@ -29,25 +32,57 @@ print "---------------------------------------------\n";
 print "Scripts 4.0 Map Installer v$config_version\n";
 print "---------------------------------------------\n";
 
+if ( $config_new_ttfs )
+{
+	print("New TTFS is enabled are you sure you want to make a new one? This will delete your ttfs folder. Enter y to proceed.");
+	print("\n");
+	my $input = <STDIN>;
+	chomp($input);
+	if ( $input !~ /y/i )
+	{
+		exit(1);
+	}
+}
+
 my $path = getcwd;
+$config_ttfs_path = $path . "/Renegade/FDS/ttfs/";
+$config_ttfs_path =~ s#/#\\#g;
 my $directory = $config_map_directory;
 my $install = $config_export_directory . '/' . $config_install_file;
-my $ttcfg = $config_export_directory . '/' . $config_ttcfg_file;
-my $ttcfg_backup = $config_export_directory . '/tt_backup.txt';
+my $ttcfg = $path . '/' . $config_ttcfg_file;
+my $ttcfg_backup = $path . '/tt_backup.cfg';
+my $ttfs_folder = $path . "/Renegade/FDS/ttfs/";
 my $mydef;
 my $author = $config_author;
 my $version = $config_map_version;
 my $packages = $config_packages;
 my $packageslength = length($packages);
 
+# Remove Old Files
 mkdir( $config_map_directory ) unless(-d $config_map_directory );
 unlink $install if ( -e $install );
-#if ( -e $ttcfg_backup ) {
-#	unlink $ttcfg_backup if ( -e $ttcfg_backup );
-#	copy("$ttcfg", "$ttcfg_backup" )
-#}
+
+
+unlink $ttcfg_backup if ( -e $ttcfg_backup);
+
+#backup tt.cfg
+if ( -e $ttcfg)
+{
+	copy($ttcfg, $ttcfg_backup ) or warn "Failed to Backup $ttcfg";
+}
+
 unlink $ttcfg if ( -e $ttcfg );
-rmtree('Renegade') if ( -d 'Renegade' && $config_new_ttfs);
+
+#delete old ttfs
+if ( $config_new_ttfs )
+{
+	if ( -e $ttfs_folder )
+	{
+		rmtree($ttfs_folder);
+	}
+}
+#
+
 
 #Get Maps from maps folder
 opendir ( my $mapsfh, $directory) or die $directory;
@@ -196,7 +231,41 @@ print $ttcfg_fh "	repositoryUrl = \"$config_repository\";\n";
 print $ttcfg_fh "};\n";
 close ( $ttcfg_fh );
 print "Done!\n";
-sleep(5);
+print("\n");
+
+
+
+
+if ( !$config_web_directory )
+{
+	$config_web_directory = $path . "/ttfs/";
+}
+
+if ( -d $config_web_directory )
+{
+	
+	unless( -d $config_ttfs_path ) 
+	{
+		print "Failed to find ttfs directory.\n";
+		sleep(60);
+		exit(1);
+	}
+	
+	print "Preparing to copy TTFS to webserver.\n";
+	mkdir $config_web_directory;
+	sleep(2);
+
+	my $cp = File::NCopy->new(recursive => 1);
+	$cp->copy($config_ttfs_path, $config_web_directory) 
+	or die "Could not perform rcopy of $config_ttfs_path to $config_web_directory: $!";
+	print "Copied TTFS to web server directory. $config_web_directory\n";
+}
+else
+{
+	print "Failed to find web directory. $config_web_directory\n";
+}
+
+sleep(60);
 exit (1);
 
 
@@ -222,6 +291,7 @@ sub ReadConfig
 			elsif (/^\s*InstallExtraPackages\s*=\s*(.+)/i)					{ $config_extra_packages = $1; }
 			elsif (/^\s*ExtraPackages\s*=\s*(.+)/i)							{ $config_packages = $1; }
 			elsif (/^\s*RepositoryUrl\s*=\s*(.+)/i)							{ $config_repository = $1; }
+			elsif (/^\s*RepositoryDir\s*=\s*(.+)/i)							{ $config_web_directory = $1; }
 			
 			elsif ( $_ =~ m/^$config_map_prefix/ )
 			{
@@ -232,3 +302,18 @@ sub ReadConfig
 	close $fh;
 }
 
+sub deldir 
+{
+  my $dirtodel = pop;
+  my $sep = '\\'; #change this line to "/" on linux.
+  opendir(DIR, $dirtodel);
+  my @files = readdir(DIR);
+  closedir(DIR);
+ 
+  @files = grep { !/^\.{1,2}/ } @files;
+  @files = map { $_ = "$dirtodel$sep$_"} @files;
+ 
+  @files = map { (-d $_)?deldir($_):unlink($_) } @files;
+ 
+  rmdir($dirtodel);
+}
