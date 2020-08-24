@@ -1,8 +1,7 @@
 package generate_map_presets;
 
-# created by Blacky
+# created by BigWrench
 use File::Copy;
-use File::NCopy;
 use Cwd qw(getcwd);
 
 my @files = ();
@@ -20,7 +19,7 @@ my $path = getcwd;
 ReadConfig();
 
 print "-------------------------\n";
-print "Map Preset Generator v2.2\n";
+print "Map Preset Generator v2.1\n";
 print "-------------------------\n";
 
 unless ( -e "$configfile" )
@@ -52,15 +51,6 @@ foreach my $map (@maps)
 	my $dir = $path . "\\export\\";
 	mkdir($dir . $mapname) unless (-d $mapname);
 	$dir = $path . "\\export\\" . $mapname . "\\";
-	my $dirconfig = $path . "\\" . $mapname . "\\";
-	if ( -d $dirconfig )
-	{
-		#copy("$config_preset_file", "$ddb" ) or die "Copy failed: $ddb";
-		mkdir('export\\' . $mapname ) unless(-d $dir );
-		my $config_dir = File::NCopy->new(recursive => 1);
-		$config_dir->copy($dirconfig, $dir); # Copy $dir1 to $dir2 recursively
-		print "Copied Config $mapname Directory.\n";
-	}
 	my $ddbdir = $path . "\\export\\presets\\" . $map . ".ddb";
 	my $ddb = $dir . $map . ".ddb";
 	my $ttini = $dir . $map . "_tt.ini";
