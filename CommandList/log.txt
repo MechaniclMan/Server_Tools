@@ -1,0 +1,28 @@
+Reading commands.xml 
+Reading admin.xml
+Reading custom_commands.xml
+Reading extras.xml
+Reading ForceTT.xml
+Reading HostBan.xml
+Reading ipbot.xml
+Reading iplookup.xml
+Reading ip_database.xml
+Reading joinmessages.xml
+Reading jukebox.xml
+Reading monthlyrank.xml
+Reading mute.xml
+Reading PrivateChatHookPlugin.xml
+Reading RageQuit.xml
+Reading rank.xml
+Reading recommendations.xml
+Reading seen.xml
+Reading sounds.xml
+Reading spectate.xml
+Reading tags.xml
+Reading warnsystem.xml
+
+
+Enabled Commands: 237
+Disabled Commands: 22
+
+Done Generating Commands.txt

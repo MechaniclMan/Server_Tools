@@ -1,0 +1,1280 @@
+<?xml version="1.0"?>
+<commands>
+  <level>
+
+<!--
+   Permission Levels
+
+   Controls who can use which commands. Don't change this if you don't know
+   what you are doing!
+-->
+
+    <!-- All users -->
+    <permission level="1">
+      <usergroup>irc_voice</usergroup>
+      <usergroup>irc_normal</usergroup>
+      <usergroup>irc_halfop</usergroup>
+      <usergroup>irc_op</usergroup>
+      <usergroup>irc_protected</usergroup>
+      <usergroup>irc_founder</usergroup>
+      <usergroup>irc_normal</usergroup>
+      <usergroup>ingame_normal</usergroup>
+      <usergroup>ingame_temp_mod</usergroup>
+      <usergroup>ingame_half_mod</usergroup>
+      <usergroup>ingame_full_mod</usergroup>
+      <usergroup>ingame_admin</usergroup>
+    </permission>
+
+    <!-- Low level moderator commands -->
+    <permission level="2">
+      <usergroup>irc_voice</usergroup>
+      <usergroup>irc_halfop</usergroup>
+      <usergroup>irc_op</usergroup>
+      <usergroup>irc_protected</usergroup>
+      <usergroup>irc_founder</usergroup>
+      <usergroup>ingame_temp_mod</usergroup>
+      <usergroup>ingame_half_mod</usergroup>
+      <usergroup>ingame_full_mod</usergroup>
+      <usergroup>ingame_admin</usergroup>
+    </permission>
+
+    <!-- Mid level moderator commands -->
+    <permission level="3">
+      <usergroup>irc_halfop</usergroup>
+      <usergroup>irc_op</usergroup>
+      <usergroup>irc_protected</usergroup>
+      <usergroup>irc_founder</usergroup>
+      <usergroup>ingame_half_mod</usergroup>
+      <usergroup>ingame_full_mod</usergroup>
+      <usergroup>ingame_admin</usergroup>
+    </permission>
+
+    <!-- High level moderator commands -->
+    <permission level="4">
+      <usergroup>irc_op</usergroup>
+      <usergroup>irc_protected</usergroup>
+      <usergroup>irc_founder</usergroup>
+      <usergroup>ingame_full_mod</usergroup>
+      <usergroup>ingame_admin</usergroup>
+    </permission>
+
+    <!-- Full admin only -->
+    <permission level="5">
+      <usergroup>irc_protected</usergroup>
+      <usergroup>irc_founder</usergroup>
+      <usergroup>ingame_admin</usergroup>
+    </permission>
+
+  </level>
+
+
+<!--
+  Unsorted Commands
+
+  Commands which have not been sorted into groups yet...
+-->
+
+  <command name="getbw">
+    <permission level="3"/>
+    <syntax value="!getbw &lt;playername&gt;"/>
+    <help value="Gets bandwidth settings"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="setbw">
+    <permission level="3"/>
+    <syntax value="!setbw &lt;playername&gt; &lt;bandwidth&gt;"/>
+    <help value="Sets bandwidth settings of a player"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="kill">
+    <permission level="3"/>
+    <syntax value="!kill &lt;playername&gt;"/>
+    <help value="Kills a player"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="killme">
+    <permission level="1"/>
+    <syntax value="!killme"/>
+    <help value="Allows a player to kill themselves"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="kick">
+    <permission level="2"/>
+    <syntax value="!kick &lt;playername&gt; &lt;reason&gt;"/>
+    <help value="Kicks a specific user"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="teams">
+    <permission level="3"/>
+    <syntax value="!teams"/>
+    <help value="Makes teams fair"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="1"/>
+  </command>
+  <command name="qkick">
+    <permission level="2"/>
+    <syntax value="!qkick &lt;playername&gt; &lt;reason&gt;"/>
+    <help value="Qkicks (kick and auto-allow) a specific user"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="ban">
+    <permission level="3"/>
+    <syntax value="!ban &lt;playername&gt; &lt;reason&gt; OR !ban &lt;player&gt; &lt;duration&gt; &lt;reason&gt;"/>
+    <help value="Ban's a user from the server."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+    <alias>kickban</alias>
+    <alias>kb</alias>
+  </command>
+  <command name="addban">
+    <permission level="3"/>
+    <syntax value="!addban &lt;playername&gt; &lt;ip&gt; &lt;serial&gt; &lt;reason&gt;"/>
+    <help value="Add a ban entry to the fds."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="addbanexception">
+    <permission level="3"/>
+    <syntax value="!addbanexception &lt;playername&gt; &lt;ip&gt; &lt;serial&gt; &lt;reason&gt;"/>
+    <help value="Enter a ban exception to allow a player to connect to the server."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="removebanexception">
+    <permission level="3"/>
+    <syntax value="!removebanexception &lt;entry&gt;"/>
+    <help value="Delete a player from the ban allow list."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="listbanexception">
+    <permission level="3"/>
+    <syntax value="!listbanexception &lt;playername&gt; &lt;ip&gt; &lt;serial&gt; "/>
+    <help value="Displays player's that have a ban exception."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="listban">
+    <permission level="3"/>
+    <syntax value="!listban &lt;playername&gt; &lt;ip&gt; &lt;serial&gt; &lt;reason&gt;"/>
+    <help value="List the fds ban entry's."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="tempban">
+    <permission level="3"/>
+    <syntax value="!tempban &lt;player&gt; &lt;ip&gt; &lt;serial&gt; &lt;duration&gt; &lt;reason&gt;"/>
+    <help value="Enter a tempban entry to the database."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<alias>tban</alias>
+	<alias>timeban</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="banip">
+    <permission level="3"/>
+    <syntax value="!banip &lt;ip/partial ip&gt; &lt;reason&gt;"/>
+    <help value="Bans an ip or ip range from the server. To ban a partial IP use !banip 123.123.123 (First three digit groups)"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="gameover">
+    <permission level="4"/>
+    <syntax value="!gameover NOW"/>
+    <help value="Ends the current map"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="allow">
+    <permission level="3"/>
+    <syntax value="!allow &lt;playername&gt;"/>
+    <help value="Allows a user back to the server after they have been kicked"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="setnextmap">
+    <permission level="4"/>
+    <syntax value="!setnextmap &lt;map&gt;"/>
+    <help value="Sets the next map in the rotation"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <alias>snm</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="page">
+    <permission level="1"/>
+    <syntax value="!page &lt;user&gt; &lt;message&gt;"/>
+    <help value="Pages a user"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="wpage">
+    <permission level="1"/>
+    <syntax value="!wpage &lt;user&gt; &lt;message&gt;"/>
+    <help value="Pages an user on XWIS"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="ppage">
+    <permission level="1"/>
+    <syntax value="!ppage &lt;user&gt; &lt;message&gt;"/>
+    <help value="Pages a user (Gamespy Arcade Style)"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="pamsg">
+    <permission level="3"/>
+    <syntax value="!pamsg &lt;user&gt; &lt;message&gt;"/>
+    <help value="Sends a private Admin Message to a user"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+ </command>
+ <command name="tpage">
+    <permission level="3"/>
+    <syntax value="!tpage &lt;team&gt; &lt;message&gt;"/>
+    <help value="Pages entire team (specify Nod or GDI)"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="forcetc">
+    <permission level="3"/>
+    <syntax value="!forcetc &lt;playername&gt;"/>
+    <help value="Forces a user to change team"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <alias>ftc</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="admin_message">
+    <permission level="3"/>
+    <syntax value="!amsg &lt;message&gt;"/>
+    <help value="Sends a private Admin Message to all players"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+    <alias>amsg</alias>
+  </command>
+  <command name="donate">
+    <permission level="1"/>
+    <syntax value="!donate &lt;playername&gt; &lt;amount&gt;"/>
+    <help value="Donates money from your account to another user's account"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="nextmap">
+    <permission level="1"/>
+    <syntax value="!nextmap"/>
+    <help value="Shows the next map"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+    <alias>shownext</alias>
+    <alias>shownextmap</alias>
+    <alias>next</alias>
+  </command>
+  <command name="players">
+    <permission level="1"/>
+    <syntax value="!players"/>
+    <help value="Shows all the players ingame"/>
+    <alias>pl</alias>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="playerinfo">
+    <permission level="2"/>
+    <syntax value="!playerinfo"/>
+    <help value="Shows detailed playerinfo"/>
+    <alias>pi</alias>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="gameinfo">
+    <permission level="1"/>
+    <syntax value="!gameinfo"/>
+    <help value="Shows detailed gameinfo"/>
+    <alias>gi</alias>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="addtempmod">
+    <permission level="3"/>
+    <syntax value="!atm &lt;playername&gt;"/>
+    <help value="Adds a temp moderator"/>
+    <alias>atm</alias>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="deltempmod">
+    <permission level="3"/>
+    <syntax value="!dtm &lt;playername&gt;"/>
+    <help value="Deletes a temp moderator"/>
+    <alias>dtm</alias>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="scripts">
+    <permission level="1"/>
+    <syntax value="!scripts"/>
+    <help value="Shows scripts version of all players"/>
+    <enabled value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="ids">
+    <permission level="3"/>
+    <syntax value="!ids"/>
+    <help value="Displays all Ids of the players"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="hostmsg">
+    <permission level="1"/>
+    <syntax value="!msg &lt;message&gt;"/>
+    <help value="Sends a public message to the server"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <alias>msg</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="auth">
+    <permission level="2"/>
+    <syntax value="!auth &lt;user&gt;"/>
+    <help value="Authenticates a user ingame"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="rules">
+    <permission level="1"/>
+    <syntax value="!rules"/>
+    <help value="Displays the rules"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <group>ingame</group>
+    <alias>r</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="delban">
+    <permission level="4"/>
+    <syntax value="!delban &lt;id&gt;"/>
+    <help value="Deletes a specific ban"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="autoannounce">
+    <permission level="2"/>
+    <syntax value="!autoannounce"/>
+    <help value="Displays a random auto announce"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="postmsg">
+    <permission level="2"/>
+    <syntax value="!postmsg &lt;msgnum&gt;"/>
+    <help value="Displays one pre-defined message"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="rotation">
+    <permission level="1"/>
+    <syntax value="!rotation"/>
+    <help value="Displays the server&apos;s rotation"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="maplist">
+    <permission level="2"/>
+    <syntax value="!maplist"/>
+    <help value="Displays the server&apos;s maplist"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="version">
+    <permission level="1"/>
+    <syntax value="!version"/>
+    <help value="Displays the version of BRenBot running on the server"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="uptime">
+    <permission level="2"/>
+    <syntax value="!uptime"/>
+    <help value="Shows how long BRenBot has been running for"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="moderatorlist">
+    <permission level="1"/>
+    <syntax value="!moderatorlist"/>
+    <help value="Displays a list of all server administrators and moderators."/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <alias>modlist</alias>
+    <alias>ml</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="modules">
+    <permission level="4"/>
+    <syntax value="!modules"/>
+    <help value="Displays the available modules"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="set">
+    <permission level="4"/>
+    <syntax value="!set &lt;module_name&gt; &lt;on/off&gt;"/>
+    <help value="Sets a specific module"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="donators">
+    <permission level="1"/>
+    <syntax value="!donators"/>
+    <help value="Shows all donators ingame"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <alias>sd</alias>
+    <alias>showdonators</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="showmods">
+    <permission level="1"/>
+    <syntax value="!showmods"/>
+    <help value="Shows all moderators ingame"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <alias>sm</alias>
+    <alias>mods</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="help">
+    <permission level="1"/>
+    <syntax value="!help &lt;command&gt;"/>
+    <help value="Displays all available commands and descriptions"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="showmsgs">
+    <permission level="2"/>
+    <syntax value="!showmsgs"/>
+    <help value="Displays all pre-defined messages"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="buildings">
+    <permission level="1"/>
+    <syntax value="!buildings"/>
+    <help value="Displays all buildings and their health"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <module>gamelog</module>
+    <group>irc_public</group>
+    <alias>bi</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="vehicles">
+    <permission level="2"/>
+    <syntax value="!vehicles"/>
+    <help value="Displays all vehicles"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <module>gamelog</module>
+    <alias>ve</alias>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="stats">
+    <permission level="2"/>
+    <syntax value="!stats &lt;playername&gt;"/>
+    <help value="Displays ingame statistics of a specific player"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <module>gamelog</module>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="statsme">
+    <permission level="1"/>
+    <syntax value="!statsme"/>
+    <help value="Displays your detailed ingame statistics"/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <module>gamelog</module>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="minelimit">
+    <permission level="1"/>
+    <syntax value="!minelimit"/>
+    <help value="Displays current mine limit"/>
+    <enabled value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+    <alias>mines</alias>
+    <alias>mlimit</alias>
+  </command>
+  <command name="vehiclelimit">
+    <permission level="1"/>
+    <syntax value="!minelimit"/>
+    <help value="Displays current vehicle limit"/>
+    <enabled value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+    <alias>vl</alias>
+    <alias>vlimit</alias>
+  </command>
+  <command name="about">
+    <permission level="4"/>
+    <syntax value="!about &lt;module&gt;"/>
+    <help value="Shows the description for the specified module"/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  <command name="shun">
+    <permission level="3"/>
+    <syntax value="!shun &lt;player&gt;"/>
+    <help value="Shuns the specified player, so they cannot use any of BRenBots commands"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="unshun">
+    <permission level="3"/>
+    <syntax value="!unshun &lt;player&gt;"/>
+    <help value="Unshuns the specified player, so they can use BRenBots commands again"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+  <command name="ping">
+    <permission level="1"/>
+    <syntax value="!ping &lt;player&gt;"/>
+    <help value="Shows the ping of the specified player."/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+
+
+<!--
+  Voting Commands
+
+  Commands related to the voting system
+-->
+
+  <command name="vote">
+    <permission level="1"/>
+    <syntax value="!vote kick &lt;username&gt; &lt;reason&gt; OR !vote map &lt;mapname&gt; OR !vote cyclemap OR !vote suddendeath OR !vote powerup OR !vote powerdown"/>
+    <help value="Kick and Map Voting. Username can be a partial username. Mapname can be a partial mapname. Cyclemap will switch to the next map in the rotation."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+	<group>irc_public</group>
+	<group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+    <alias>poll</alias>
+  </command>
+
+  <command name="voting">
+    <permission level="4"/>
+    <syntax value="!voting on/off"/>
+    <help value="Enables or disables voting."/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+
+  <command name="stop">
+    <permission level="4"/>
+    <syntax value="!stop"/>
+    <help value="Stops votes in progress."/>
+    <enabled value="1"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+
+
+<!--
+  CMSG Commands
+
+  Commands for sending coloured messages to players in the server
+-->
+
+  <command name="cmsg">
+    <permission level="4"/>
+    <syntax value="!cmsg &lt;colour&gt; &lt;message&gt;"/>
+    <help value="Sends a coloured message to the server. Colour can either be a 3 digit RGB code (format 000,000,000) or a colour name."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="cmsgp">
+    <permission level="4"/>
+    <syntax value="!cmsgp &lt;colour&gt; &lt;player&gt; &lt;message&gt;"/>
+    <help value="Sends a coloured message to a single player. Colour can either be a 3 digit RGB code (format 000,000,000) or a colour name."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="cmsgt">
+    <permission level="4"/>
+    <syntax value="!cmsgt &lt;colour&gt; &lt;team&gt; &lt;message&gt;"/>
+    <help value="Sends a coloured message to a single team. Colour can either be a 3 digit RGB code (format 000,000,000) or a colour name. Team can be the three digit name or ID number."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+
+<!--
+  Sound Commands
+
+  Commands for sending sounds to players in the server
+-->
+
+  <command name="snda">
+    <permission level="3"/>
+    <syntax value="!snda &lt;soundfile.wav&gt;"/>
+    <help value="Plays a sound heard by all players. Filenames of soundfiles in always.dat should be used."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+    <group>irc_public</group>
+    <alias>broadcast</alias>
+  </command>
+
+  <command name="sndp">
+    <permission level="3"/>
+    <syntax value="!sndp &lt;user&gt; &lt;soundfile.wav&gt;"/>
+    <help value="Plays a sound heard (only) by user. Filenames of soundfiles in always.dat should be used."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+  </command>
+
+  <command name="sndt">
+    <permission level="3"/>
+    <syntax value="!snda &lt;team&gt; &lt;soundfile.wav&gt;"/>
+    <help value="Plays a sound heard by entire team. Filenames of soundfiles in always.dat should be used. Team Nod or 0, Team GDI or 1."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+  </command>
+
+
+<!--
+  Logging Commands
+
+  Commands related to the logging system
+-->
+
+  <command name="logsearch">
+    <permission level="3"/>
+    <syntax value="!logsearch &lt;searchstring&gt;"/>
+    <help value="Searches all logs for any records matching your search string."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+  <command name="playersearch">
+    <permission level="3"/>
+    <syntax value="!playersearch &lt;searchstring&gt;"/>
+    <help value="Searches all player entrys for any records matching your search string."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<alias>ps</alias>
+  </command>
+
+  <command name="kicklog">
+    <permission level="3"/>
+    <syntax value="!kicklog &lt;searchstring&gt;"/>
+    <help value="Searches the kick log for any records matching your search string, or if no search is specified shows the last 10 records."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="banlog">
+    <permission level="3"/>
+    <syntax value="!banlog &lt;playername&gt;"/>
+    <help value="Searches the ban log for any records matching your search string."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="dumplogs">
+    <permission level="4"/>
+    <syntax value="!dumpLogs"/>
+    <help value="Dumps all logs to the logfiles defined in brenbot.cfg."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+
+<!--
+  Program Control Commands
+
+  Commands for restarting or closing BRenBot or the FDS. It is recommended
+  that you leave these commands at the highest permission level.
+-->
+
+  <command name="restart">
+    <permission level="4"/>
+    <syntax value="!restart"/>
+    <help value="Restarts the FDS."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="fds">
+    <permission level="4"/>
+    <syntax value="!fds &lt;command&gt;"/>
+    <help value="Sends a command directly to the FDS"/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>ingame</group>
+  </command>
+
+  <command name="rehash">
+    <permission level="4"/>
+    <syntax value="!rehash"/>
+    <help value="Rehashs all BRenBot configuration files"/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="reboot">
+    <permission level="4"/>
+    <syntax value="!reboot NOW"/>
+    <help value="Restarts BrenBot. Win32 only."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="die">
+    <permission level="4"/>
+    <syntax value="!die NOW"/>
+    <help value="Closes BRenBot."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+   <command name="serverinfo">
+    <permission level="1"/>
+    <syntax value="!serverinfo"/>
+    <help value="Shows the servers info."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+	<alias>si</alias>
+  </command>
+  
+  <command name="teaminfo">
+    <permission level="1"/>
+    <syntax value="!teaminfo &lt;team&gt;"/>
+    <help value="display team info."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<alias>ti</alias>
+  </command>
+  
+   <command name="sfps">
+    <permission level="4"/>
+    <syntax value="!sfps &lt;sfps&gt;"/>
+    <help value="Set server frames per second."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+  </command>
+  
+  <command name="playerinfo2">
+    <permission level="3"/>
+    <syntax value="!playerinfo2 &lt;player&gt;"/>
+    <help value="Playerinfo output for a player"/>
+    <enabled value="0"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+ 
+   <command name="tag">
+    <permission level="4"/>
+    <syntax value="!tag &lt;player&gt; &lt;tag&gt;"/>
+    <help value="Set player Custom tag."/>
+    <enabled value="0"/>
+    <hideInHelp value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+  </command>
+  
+   <command name="pagemods">
+    <permission level="1"/>
+    <syntax value="!pagemods &lt;message&gt;"/>
+    <help value="Pages all mods ingame."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <group>ingame</group>
+    <alias>requestmod</alias>
+    <alias>rm</alias>
+    <alias>pm</alias>
+  </command>
+ 
+  <command name="report">
+    <permission level="1"/>
+    <syntax value="!report &lt;Problem Message&gt;"/>
+    <help value="Report Server Problems."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <group>irc_public</group>
+    <group>ingame</group>
+  </command>
+  
+  <command name="sendtoirc">
+    <permission level="4"/>
+    <syntax value="!sendtoirc &lt;Command&gt;"/>
+    <help value="DEV Send command to irc.."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+   <command name="mute">
+    <permission level="2"/>
+    <syntax value="!mute &lt;player&gt;"/>
+    <help value="Mute a player from chat and radio. "/>
+    <enabled value="0"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  
+    <command name="unmute">
+    <permission level="2"/>
+    <syntax value="!unmute &lt;player&gt;"/>
+    <help value="Un-Mute a player from chat and radio. "/>
+    <enabled value="0"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="0"/>
+  </command>
+  
+   <command name="mutesounds">
+    <permission level="5"/>
+    <syntax value="!mutesounds &lt;player&gt;"/>
+    <help value="Mute a player from chat sounds. "/>
+    <enabled value="0"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="1"/>
+  </command>
+  
+   <command name="unmutesounds">
+    <permission level="5"/>
+    <syntax value="!unmutesounds &lt;player&gt;"/>
+    <help value="Un-Mute a player from chat sounds. "/>
+    <enabled value="0"/>
+    <group>ingame</group>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+    <hideInHelp value="1"/>
+  </command>
+  
+  <command name="teamchange">
+    <permission level="1"/>
+    <syntax value="!Teamchange"/>
+    <help value="Chnage teams to even the teams."/>
+    <enabled value="0"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+	<alias>tc</alias>
+  </command>
+  
+   <command name="register">
+    <permission level="4"/>
+    <syntax value="!register &lt;name&gt; &lt;ip&gt; &lt;serial&gt;"/>
+    <help value="register a player so they have to auth."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+   <command name="updateuser">
+    <permission level="4"/>
+    <syntax value="!updateuser &lt;name&gt;"/>
+    <help value="Update a registered user's info."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+   <command name="delregister">
+    <permission level="4"/>
+    <syntax value="!delregister &lt;name&gt;"/>
+    <help value="Delete a registered user."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+   <command name="spectate">
+    <permission level="3"/>
+    <syntax value="!spectate &lt;player&gt;"/>
+    <help value="Toggles spectate mode for a player."/>
+    <enabled value="0"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+    <alias>sp</alias>
+  </command>
+  
+   <command name="sspeed">
+    <permission level="3"/>
+    <syntax value="!sspeed &lt;player&gt; &lt;speed&gt;"/>
+    <help value="Set the speed of the player in spectate mode."/>
+    <enabled value="0"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+  
+   <command name="time">
+    <permission level="1"/>
+    <syntax value="!time"/>
+    <help value="Get game duration."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+  <command name="pdata_totals">
+    <permission level="1"/>
+    <syntax value="!pdata_totals"/>
+    <help value="Get player database totals."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+  <command name="plugins">
+    <permission level="3"/>
+    <syntax value="!plugins"/>
+    <help value="Show the current state of all plugins known to BRenBot."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="plugin_load">
+    <permission level="4"/>
+    <syntax value="!load_plugin &lt;plugin&gt;"/>
+    <help value="Attempts to load the specified plugin into BRenBot."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+
+  <command name="plugin_unload">
+    <permission level="4"/>
+    <syntax value="!unload_plugin &lt;plugin&gt;"/>
+    <help value="Attempts to unload the specified plugin from BRenBot."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+  </command>
+  
+   <command name="info">
+    <permission level="1"/>
+    <syntax value="!info"/>
+    <help value="Display playerinfo, gameinfo, buildings, vehicles."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>irc_public</group>
+	<group>ingame</group>
+    <alias>i</alias>
+  </command>
+  
+   <command name="skip">
+    <permission level="1"/>
+    <syntax value="!skip"/>
+    <help value="Skip the map at start of game."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+	</command>
+	
+   <command name="listregister">
+    <permission level="2"/>
+    <syntax value="!listregister &lt;name&gt;"/>
+    <help value="Display the registerd users."/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+  </command>
+  
+   <command name="datadump_gamelog">
+    <permission level="4"/>
+    <syntax value="!datadump_gamelog"/>
+    <help value="Dump Hash Data Struct to file"/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+  </command>
+  
+   <command name="datadump_playerdata">
+    <permission level="4"/>
+    <syntax value="!datadump_playerdata"/>
+    <help value="Dump Hash Data Struct to file"/>
+    <enabled value="1"/>
+    <hideInHelp value="0"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+  </command>
+
+  <command name="sshot">
+    <permission level="3"/>
+    <syntax value="!sshot &lt;playername&gt;"/>
+    <help value="Take screenshot of player with scripts 4.0"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+ 
+  <command name="ssurl">
+    <permission level="5"/>
+    <syntax value="!ssurl &lt;path&gt;"/>
+    <help value="Set the Screenshot Uploader directory path"/>
+    <enabled value="1"/>
+    <group>irc_admin</group>
+    <group>irc_private</group>
+	<group>ingame</group>
+    <hideInHelp value="0"/>
+  </command>
+
+</commands>

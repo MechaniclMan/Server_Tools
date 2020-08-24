@@ -1,0 +1,22 @@
+
+@uniquecommands = unique_commands(@commands)
+@uniqueplugins = unique_commands(@plugins)
+
+sub unique_commands
+{
+	my %seen;
+	my @commands = shift;
+	my @uniquecommands = ();
+	foreach my $value (@commands) 
+	{
+		my @entrys = split (";", $value);
+		my $entry		= $entrys[1];
+		if (!defined($seen{$entry})) 
+		{ 
+			push @uniquecommands, $value;
+			$seen{$entry} = 1;
+			Debug($entry);
+		}
+	}
+	return @uniquecommands;
+}
