@@ -1,0 +1,1 @@
+pp -o=C:\BrenBot_154\Br_Plugins\MapInstaller\MapInstaller.exe -log=C:\BrenBot_154\Br_Plugins\MapInstaller\mapinstaller.txt -v -icon=C:\strawberry\perl\bren\Renegade.ico C:\BrenBot_154\Br_Plugins\MapInstaller\MapInstaller.pl

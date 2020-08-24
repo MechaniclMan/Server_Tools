@@ -1,0 +1,1 @@
+-1	Create_Object,		3, "XG_HD_HTraj",			0, 0, 0, 0-1Play_Animation,		3, "XG_HD_HTraj.XG_HD_HTraj", 0-1	Attach_to_Bone,		4, 3, "BN_Trajectory"-437	Destroy_Object, 3
