@@ -1,0 +1,17 @@
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech1 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech2 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech3 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech4 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech5 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech6 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech7 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech8 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech9 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech10 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech11 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech12 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech13 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech14 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech15 +password pass +multi
+start C:\Westwood\Renegade\game2.exe +connect 65.129.66.21:5001 +netplayername Mech16 +password pass +multi

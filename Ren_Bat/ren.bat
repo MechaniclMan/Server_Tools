@@ -1,0 +1,1 @@
+C:\Westwood\Renegade\game2.exe +connect 75.167.148.216:4848 +netplayername test +password pass +multi
