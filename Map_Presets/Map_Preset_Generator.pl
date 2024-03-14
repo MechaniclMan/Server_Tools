@@ -72,6 +72,22 @@ foreach my $map (@maps)
 	copy("$config_mapini_file", "$mapini" ) or die "Copy failed: $mapini" if ( $config_mapini_enabled == 1 );
 	copy("$config_strings_file", "$strings" ) or die "Copy failed: $strings" if ( $config_strings_enabled == 1 );
 	print "Generating $map Files.\n";
+	
+	$dir = $path . "\\export\\all\\";
+	my $ddbdir2 = $path . "\\export\\presets\\" . $map . ".ddb";
+	my $ddb2 = $dir . $map . ".ddb";
+	my $ttini2 = $dir . $map . "_tt.ini";
+	my $mapini2 = $dir . $map . "_map.ini";
+	my $strings2  = $dir . "strings_map.tdb";	
+	
+	
+	copy("$config_preset_file", "$ddb2" ) or die "Copy failed: $ddb2";
+	copy("$config_preset_file", "$ddbdir2" ) or die "Copy failed: $ddbdir2";
+	copy("$config_ttini_file", "$ttini2" ) or die "Copy failed: $ttini2";
+	copy("$config_mapini_file", "$mapini2" ) or die "Copy failed: $mapini2";
+	copy("$config_strings_file", "$strings2" ) or die "Copy failed: $strings2";	
+	
+	
 	#print "$ddb\n";
 }
 
