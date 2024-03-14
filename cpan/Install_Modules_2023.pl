@@ -4,19 +4,19 @@ use strict;
 use CPAN;
 
 print "\n";
-print "Installing Modules\n";
+print "Installing Modules 2023\n";
 print "\n";
 
 
 #my @modules = ();
 #push (@modules, $_);
 
-CPAN::Shell->install("POE");
-CPAN::Shell->install("POE::Kernel");
-CPAN::Shell->install("POE::Session");
-CPAN::Shell->install("POE::Component::Client::TCP");
-CPAN::Shell->install("POE::Filter::Stream");
-CPAN::Shell->install("Encode");
+#CPAN::Shell->install("POE");
+#CPAN::Shell->install("POE::Kernel");
+#CPAN::Shell->install("POE::Session");
+#CPAN::Shell->install("POE::Component::Client::TCP");
+#CPAN::Shell->install("POE::Filter::Stream");
+#CPAN::Shell->install("Encode");
 CPAN::Shell->install("Encode::Byte");
 CPAN::Shell->install("Date::Calc");
 CPAN::Shell->install("XML::Simple");
@@ -54,6 +54,12 @@ CPAN::Shell->install("File::Path");
 CPAN::Shell->install("Cwd");
 CPAN::Shell->install("Archive::Zip");
 CPAN::Shell->install("Exporter");
+
+CPAN::Shell->install("Net");
+CPAN::Shell->install("Net::SSH");
+CPAN::Shell->install("Net::SSH::Perl;");
+CPAN::Shell->install("Net::SSH::Putty");
+CPAN::Shell->install("Net::OpenSSH");
 
 
 print "Done Installing Modules!\n";
