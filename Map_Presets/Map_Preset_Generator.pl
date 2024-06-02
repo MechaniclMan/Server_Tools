@@ -1,6 +1,5 @@
 package generate_map_presets;
 
-# created by Blacky
 use File::Copy;
 use File::NCopy;
 use Cwd qw(getcwd);
