@@ -1,6 +1,5 @@
 package generate_sounds;
 
-# create by BigWrench
 # generate_sounds used by jukebox and the sounds plugin.
 
 use File::Find;
